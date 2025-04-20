@@ -14,7 +14,7 @@ app.use('/api/auth', authRoutes);
 
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Your React app's origin
+  origin: 'http://localhost:5000', // Your React app's origin
   credentials: true
 }));
 

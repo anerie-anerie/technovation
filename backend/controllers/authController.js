@@ -1,14 +1,17 @@
 export const register = (req, res) => {
-    const { name, email, password } = req.body;
-  
-    const sql = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-    db.query(sql, [name, email, password], (err, results) => {
-      if (err) {
-        return res.status(500).send('Error registering user');
-      }
-      res.status(200).send('User registered');
-    });
-  };
+  console.log('Register endpoint hit', req.body); // 👈 add this line
+
+  const { name, email, password } = req.body;
+
+  const sql = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+  db.query(sql, [name, email, password], (err, results) => {
+    if (err) {
+      console.error('Error inserting user:', err); // 👈 log DB error
+      return res.status(500).send('Error registering user');
+    }
+    res.status(200).send('User registered');
+  });
+};
   
   export const login = (req, res) => {
     const { email, password } = req.body;
